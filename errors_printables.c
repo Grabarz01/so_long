@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_printables.c                                 :+:      :+:    :+:   */
+/*   errors_printables.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgrabows <fgrabows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:16:24 by fgrabows          #+#    #+#             */
-/*   Updated: 2024/09/17 14:27:46 by fgrabows         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:46:50 by fgrabows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_error_message(char *str, int num)
+void	ft_error_message(char *str, int num)
 {
-	ft_putstr_fd(str,2);
+	ft_putstr_fd(str, 2);
 	exit(num);
 }
 
-void ft_error_manager(int x)
+void	ft_error_manager(int x)
 {
 	if (x == 0)
 	{
@@ -42,9 +42,9 @@ void ft_error_manager(int x)
 	exit (1);
 }
 
-void ft_print_moves(int moves)
+void	ft_print_moves(int moves)
 {
-	if(moves == 1)
+	if (moves == 1)
 		ft_putstr_fd("You made 1 move\n", 1);
 	else
 	{

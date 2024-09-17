@@ -6,7 +6,7 @@
 /*   By: fgrabows <fgrabows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:08:05 by fgrabows          #+#    #+#             */
-/*   Updated: 2024/09/17 15:01:55 by fgrabows         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:57:01 by fgrabows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ typedef struct s_data
 
 typedef struct s_elements
 {
-	int colectibles;
-	int exit;
+	int	colectibles;
+	int	exit;
 }		t_elements;
 //functions
 void	ft_move_down(t_data *data);

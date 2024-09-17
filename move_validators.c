@@ -6,15 +6,15 @@
 /*   By: fgrabows <fgrabows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:36:09 by fgrabows          #+#    #+#             */
-/*   Updated: 2024/09/17 14:38:51 by fgrabows         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:53:55 by fgrabows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int ft_check_next_object(int x, int y, t_data *data)
+int	ft_check_next_object(int x, int y, t_data *data)
 {
-	char element;
+	char	element;
 
 	element = data->map[y][x]; 
 	if (element == '1')
@@ -25,9 +25,9 @@ int ft_check_next_object(int x, int y, t_data *data)
 			return (1);
 		return (0);
 	}
-	return(1);
+	return (1);
 }
-void ft_win(int x, int y, t_data *data)
+void	ft_win(int x, int y, t_data *data)
 {
 	ft_print_moves(++data->moves);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_floor.img_ptr,

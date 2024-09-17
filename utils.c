@@ -6,7 +6,7 @@
 /*   By: fgrabows <fgrabows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:18:38 by fgrabows          #+#    #+#             */
-/*   Updated: 2024/09/17 14:39:04 by fgrabows         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:54:40 by fgrabows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ char 	**ft_map_copy(t_data *data)
 }
 
 
-void ft_set_map(int fd, t_data *data)
+void	ft_set_map(int fd, t_data *data)
 {
-	char *buff;
-	int n;
+	char	*buff;
+	int		n;
 
 	n = 0;
-	while(1)
+	while (1)
 	{
 		buff = get_next_line(fd);
-		if(!buff)
-			break;
+		if (!buff)
+			break ;
 		ft_strlcpy(data->map[n], buff, data->map_width + 1);
 		n++;
 		free(buff);
@@ -63,7 +63,7 @@ void 	ft_check_line(char *buff, t_data *data)
 
 	x = buff[data->map_width - 2];
 	if (x == '1')
-		return;
+		return ;
 	else if (x == '0' || x =='P'|| x == 'E' || x =='C')
 	{
 		free(buff);
@@ -76,7 +76,7 @@ void 	ft_check_line(char *buff, t_data *data)
 	}
 }
 
-void ft_allocate_map_memory(t_data *data)
+void	ft_allocate_map_memory(t_data *data)
 {
 	int n;
 
@@ -84,10 +84,10 @@ void ft_allocate_map_memory(t_data *data)
 	if (!(data->map))
 		ft_error_manager(0);
 	n = 0;
-	while(n < data->map_height)
+	while (n < data->map_height)
 	{
 		data->map[n] = malloc(sizeof(char) * data->map_width);
-		if(!(data->map[n]))
+		if (!(data->map[n]))
 		{
 			ft_free_split(data->map);
 			ft_error_manager(0);

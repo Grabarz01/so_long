@@ -6,29 +6,11 @@
 /*   By: fgrabows <fgrabows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 13:05:02 by fgrabows          #+#    #+#             */
-/*   Updated: 2024/09/17 14:40:11 by fgrabows         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:51:53 by fgrabows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-//  int	ft_empty_arg(char *argv)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while(argv[i])
-// 	{
-// 		while (argv[i] && (argv[i] == ' ' || argv[i] == '\t' || argv[i] == '\f'
-// 			|| argv[i] == '\v' || argvvoid	ft_get_size(int fd, t_data *data)
-// 			i++;
-// 		if (!argv[i] || ft_strncmp(argv[i], ".bar", 5) == 0)
-// 			break;
-// 		return(0);
-// 	}
-// 	ft_putstr_fd("Error: empty argument", 2);
-// 	exit(1);
-// }
 
 //exit is accessible
 //there is only one exit
@@ -38,15 +20,13 @@
 //only accept 0,1,P,E,C
 //for the time of checking the possibility to access collectibles
 	//we consider the exit the same as wall
-
-
 void	ft_map_checker(char *map, t_data *data)
 {
-	int fd;
-	int fd2;
+	int	fd;
+	int	fd2;
 
 	fd = open(map, O_RDONLY);
-	if(fd < 0)
+	if (fd < 0)
 		ft_error_manager(0);
 	data->map_height = 0;
 	data->map_width = 0;
@@ -54,14 +34,13 @@ void	ft_map_checker(char *map, t_data *data)
 	if (data->map_height < 3 || data->map_width < 4) // with \n
 		ft_error_manager(4);
 	fd2 = open(map, O_RDONLY);
-	if(fd2 < 0)
+	if (fd2 < 0)
 	{
 		ft_free_split(data->map);
 		ft_error_manager(0);
 	}
 	close(fd);
 	ft_check_map(fd2, data);
-	
 }
 
 void	ft_input_checker(int argc, char **argv)
@@ -92,9 +71,9 @@ void	ft_input_checker(int argc, char **argv)
 }
 void	ft_check_map(int fd, t_data *data)
 {
-	char **map_copy;
-	t_elements access;
-	
+	char		**map_copy;
+	t_elements	access;
+
 	ft_allocate_map_memory(data);
 	ft_set_map(fd, data);
 	close(fd);
@@ -106,17 +85,16 @@ void	ft_check_map(int fd, t_data *data)
 	access.exit = 0;
 	ft_element_access(map_copy, data->x_player, data->y_player, &access);
 	ft_free_split(map_copy);
-	if(access.colectibles != data->collectibles || access.exit != 1)
+	if (access.colectibles != data->collectibles || access.exit != 1)
 	{
 		ft_free_split(data->map);
 		ft_error_manager(7);
 	}
 }
 
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data data;
+	t_data	data;
 	
 	ft_input_checker(argc, argv);
 	ft_map_checker(argv[1], &data);
