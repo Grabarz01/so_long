@@ -6,7 +6,7 @@
 /*   By: fgrabows <fgrabows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:08:05 by fgrabows          #+#    #+#             */
-/*   Updated: 2024/09/16 20:43:41 by fgrabows         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:01:55 by fgrabows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 #define COLLECTIBLE_IMG "./imgs/collectible.xpm"
 #define EXIT_IMG "./imgs/exit.xpm"
 #define ENTRANCE_IMG "./imgs/entrance.xpm"
+#define IMG_SIZE 32
 //keys
 #define RIGHT_ARROW 65363
 #define LEFT_ARROW 65361
@@ -39,14 +40,13 @@
 #define D_KEY 100
 #define A_KEY 97
 #define S_KEY 115
-
+//structures
 typedef struct s_img
 {
 	void	*img_ptr;
 	int		width;
 	int		height;
-}	t_img;
-
+}		t_img;
 
 typedef struct s_data
 {
@@ -71,15 +71,48 @@ typedef struct s_data
 	int		moves;
 	int		exit_x;
 	int		exit_y;
-}	t_data;
+}		t_data;
 
 typedef struct s_elements
 {
 	int colectibles;
 	int exit;
-}	t_elements;
-
-
-#define IMG_SIZE 32
+}		t_elements;
+//functions
+void	ft_move_down(t_data *data);
+void	ft_move_up(t_data *data);
+void	ft_move_left(t_data *data);
+void	ft_move_right(t_data *data);
+int		ft_change_pos(int keycode, t_data *data);
+void	ft_error_message(char *str, int num);
+void	ft_error_manager(int x);
+void	ft_print_moves(int moves);
+void	ft_free_split(char **args);
+void	ft_free_imgs(t_data *data);
+void	ft_free_everything(t_data *data);
+void	ft_element_access(char **map_copy, int x, int y, t_elements *access);
+void	ft_walls(t_data *data);
+int		ft_count_elements(char element, t_data *data);
+void	ft_elements(char **map, t_data *data, int n, int m);
+void	ft_get_size(int fd, t_data *data);
+int		ft_check_next_object(int x, int y, t_data *data);
+void	ft_win(int x, int y, t_data *data);
+void	ft_collection(t_data *data);
+int		ft_close(t_data *data);
+void	ft_hooks(t_data *data);
+void	ft_set_ptrs(t_data *data);
+void	ft_starting_point(int x, int y, t_data *data);
+void	ft_exit_point (int x, int y, t_data *data);
+char	**ft_map_copy(t_data *data);
+void	ft_set_map(int fd, t_data *data);
+void	ft_check_line(char *buff, t_data *data);
+void	ft_allocate_map_memory(t_data *data);
+void	ft_put_img(int x, int y, t_data *data);
+void	ft_render_map(t_data *data);
+void	ft_init_imgs(char *path, t_data *data, t_img *img);
+void	ft_all_init(t_data *data);
+void	ft_check_map(int fd, t_data *data);
+void	ft_input_checker(int argc, char **argv);
+void	ft_map_checker(char *map, t_data *data);
 
 #endif
